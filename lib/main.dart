@@ -20,11 +20,41 @@ class _ListaDeCitasState extends State<ListaDeCitas> {
   ];
 
 
+  Widget citaToCard(cita){
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Card(
+        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+        child:Column(
+          children: <Widget>[
+            Text(
+              cita.texto,
+              style:TextStyle(
+                fontSize: 18.0,
+                color:Colors.grey[800]
+              ),
+            ),
+
+            SizedBox(height: 6.0),
+
+            Text(
+              cita.autor,
+              style:TextStyle(
+                color:Colors.grey[400]
+                  )
+            )
+
+          ],
+        )
+      ),
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[600],
+      backgroundColor: Colors.grey[200],
       appBar:AppBar(
         centerTitle: true,
         title: Text("Frases Célebres"),
@@ -35,7 +65,7 @@ class _ListaDeCitasState extends State<ListaDeCitas> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children:citas.map(
-            (cita) => Text("${cita.texto} - ${cita.autor}")
+            (cita) => citaToCard(cita)
         ).toList()
 
       )
