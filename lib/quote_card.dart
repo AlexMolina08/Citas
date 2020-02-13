@@ -11,12 +11,13 @@ class QuoteCard extends StatelessWidget {
   El tiempo, por eso el atributo cita debe de ser final*/
 
   final Cita cita;
-  QuoteCard({this.cita});
+  final Function elimina;
+  QuoteCard({this.cita,this.elimina});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+        margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
         child: Column(
           children: <Widget>[
             Text(
@@ -41,9 +42,17 @@ class QuoteCard extends StatelessWidget {
                         color: Colors.grey[400]
                     )
                 ),
+
+                SizedBox(height: 8.0),
+
+                FlatButton.icon(
+                  onPressed: elimina,
+                  icon: Icon(Icons.delete),
+                  label: Text("Eliminar")
+                )
+
               ],
             )
-
           ],
         )
     );

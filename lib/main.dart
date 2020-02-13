@@ -9,15 +9,6 @@ void main() => runApp(MaterialApp(
   home:ListaDeCitas(),
 ));
 
-
-List<Cita> ejemplo(){
-  return <Cita>[ Cita(autor:"Federico García Lorca",texto:"Desechad tristezas y melancolías. La vida es amable, tiene pocos días y tan sólo ahora la hemos de gozar"),
-    Cita(autor:"Federico García Lorca",texto:"La noche no quiere venir para que tú no vengas, ni yo pueda ir. Pero yo iré, aunque un sol de alacranes me coma la sien"),
-    Cita(autor:"Federico García Lorca",texto:"La traducción destroza el espíritu del idioma"),
-    Cita(autor:"Federico García Lorca",texto:"El que quiere arañar la luna, se arañará el corazón.")
-  ];
-}
-
 class ListaDeCitas extends StatefulWidget {
   @override
   _ListaDeCitasState createState() => _ListaDeCitasState();
@@ -57,7 +48,15 @@ class _ListaDeCitasState extends State<ListaDeCitas> {
                   //de CartaCita (con un padding)
                     (cita) => Padding(
                       padding: EdgeInsets.all(10.0),
-                      child:QuoteCard(cita: cita)
+                      child:QuoteCard(
+                        cita:cita,
+                        //le pasamos una funcion como parámetro
+                        elimina: (){
+                          setState(() {
+                            citas.remove(cita);
+                          });
+                        }
+                      )
                     )
             ).toList()
 
